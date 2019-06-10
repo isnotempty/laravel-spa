@@ -10,9 +10,7 @@
   <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}" />
 </head>
 <body>
-<div id="app">
-  <app></app>
-</div>
+<div id="app"></div>
 <script src="{{ mix('dist/js/app.js') . '?' . time() }}"></script>
 </body>
 </html>

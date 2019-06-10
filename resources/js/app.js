@@ -1,19 +1,11 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Vuex from 'vuex'
-import { routes } from './routes'
-import App from './components/App'
+import router from '~/router'
+import App from '~/components/App'
 
-Vue.use(VueRouter)
-Vue.use(Vuex)
+import '~/components'
 
-const router = new VueRouter({
-    routes,
-    mode: 'history'
+/* eslint-disable no-new */
+new Vue({
+  router,
+  ...App
 })
-
-const app = new Vue({
-    el: '#app',
-    router,
-    components: { App }
-});
