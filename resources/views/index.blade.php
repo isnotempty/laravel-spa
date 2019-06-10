@@ -7,13 +7,13 @@
   <title>Laravel</title>
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-  <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
+  <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}" />
 </head>
 <body>
 <div id="app">
   <app></app>
 </div>
-<script src="{{ mix('js/app.js') . '?' . time() }}"></script>
+<script src="{{ mix('dist/js/app.js') . '?' . time() }}"></script>
 </body>
 </html>
 
