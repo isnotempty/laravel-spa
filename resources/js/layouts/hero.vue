@@ -3,7 +3,6 @@
     <div class="hero-body">
       <div class="container">
         <div class="column is-4 is-offset-4">
-          Hero layout
           <child />
         </div>
       </div>

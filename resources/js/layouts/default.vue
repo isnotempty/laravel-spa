@@ -1,14 +1,16 @@
 <template>
   <div class="main-layout">
     <div class="container">
-      Default layout
+      <navbar />
       <child />
     </div>
   </div>
 </template>
 
 <script>
+import Navbar from './navbar'
 export default {
-  name: 'Default'
+  name: 'Default',
+  components: { Navbar }
 }
 </script>
