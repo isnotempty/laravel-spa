@@ -6,22 +6,26 @@
           <!-- email -->
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input class="input">
+              <input class="input" v-model="form.email" :class="{ 'is-danger' : form.errors.has('email') }">
               <span class="icon is-small is-left">
-              <i class="mdi mdi-email"></i>
-            </span>
+                <i class="mdi mdi-email" />
+              </span>
             </div>
-            <p class="help is-danger">error</p>
+            <p class="help is-danger" v-if="form.errors.has('email')">
+              {{ form.errors.get('email') }}
+            </p>
           </div>
           <!-- pass -->
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input class="input">
+              <input class="input" v-model="form.password" :class="{ 'is-danger' : form.errors.has('password') }">
               <span class="icon is-small is-left">
-              <i class="mdi mdi-fingerprint"></i>
-            </span>
+                <i class="mdi mdi-fingerprint" />
+              </span>
             </div>
-            <p class="help is-danger">error</p>
+            <p class="help is-danger" v-if="form.errors.has('password')">
+              {{ form.errors.get('password') }}
+            </p>
           </div>
         </div>
       </section>
@@ -30,12 +34,14 @@
         <section class="level padding">
           <div class="level-left">
             <label class="checkbox">
-              <input type="checkbox">
+              <input type="checkbox" v-model="form.remember">
               Remember me
             </label>
           </div>
           <div class="level-right">
-            <button class="button is-success is-small">login</button>
+            <button class="button is-success is-small" @click="login">
+              login
+            </button>
           </div>
         </section>
       </template>
@@ -44,13 +50,26 @@
 </template>
 
 <script>
+import Form from 'vform'
+
 export default {
   layout: 'hero',
   name: 'Login',
 
   data: () => ({
-    email: '',
-    password: ''
-  })
+    form: new Form({
+      email: '',
+      password: '',
+      remember: true
+    })
+  }),
+
+  methods: {
+    login () {
+      console.log('test')
+      this.from.post('/api/login')
+        .then(({ data }) => { console.log(data) })
+    }
+  }
 }
 </script>
