@@ -1,42 +1,38 @@
 <template>
   <section>
-    <!-- Main container -->
-    <nav class="level">
-      <!-- Left side -->
+    <div class="level">
       <div class="level-left">
-        <div class="level-item">
-          <p class="subtitle is-5">
-            <strong>123</strong> posts
-          </p>
-        </div>
-        <div class="level-item">
-          <div class="field has-addons">
-            <p class="control">
-              <input class="input" type="text" placeholder="Find a post">
-            </p>
-            <p class="control">
-              <button class="button">
-                Search
-              </button>
-            </p>
-          </div>
-        </div>
+        Dashboard
       </div>
-
-      <!-- Right side -->
       <div class="level-right">
-        <p class="level-item"><strong>All</strong></p>
-        <p class="level-item"><a>Published</a></p>
-        <p class="level-item"><a>Drafts</a></p>
-        <p class="level-item"><a>Deleted</a></p>
-        <p class="level-item"><a class="button is-success">New</a></p>
+        <ul class="navbar-menu">
+          <li class="navbar-item">
+            <a href="#" @click.prevent="logout">
+              Logout
+              <i class="mdi mdi-arrow-right" />
+            </a>
+          </li>
+        </ul>
       </div>
-    </nav>
+    </div>
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
-  name: 'Navbar'
+  name: 'Navbar',
+
+  computed: mapGetters({
+    user: 'auth/user'
+  }),
+
+  methods: {
+    async logout () {
+      await this.$store.dispatch('auth/logout')
+      this.$router.push({ name: 'login' })
+    }
+  }
 }
 </script>
