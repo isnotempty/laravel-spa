@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Jura:400,700');
 
-@import '~@mdi/font/scss/materialdesignicons';
 @import "~bulma/sass/utilities/_all";
 
 @import 'variables';
+@import '~@mdi/font/scss/materialdesignicons';
 @import "~bulma";
 
 @import 'components/transitions';

@@ -4,9 +4,9 @@ const mix = require('laravel-mix')
 
 mix.js('resources/js/app.js', 'public/dist/js')
   .sass('resources/sass/app.scss', 'public/dist/css')
+  .copyDirectory('node_modules/@mdi/font/fonts', 'public/dist/fonts/mdi')
 
 mix.webpackConfig({
-  plugins: [],
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
