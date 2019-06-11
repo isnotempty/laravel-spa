@@ -1,14 +1,25 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <section>
-    <card title="Test title" subtitle="test subtitle" :message="message" padding>
+    <card
+      title="Login"
+      :message="message"
+      icon="mdi mdi-fingerprint"
+      padding
+    >
       <section class="bg-gray">
         <div class="padding">
           <!-- email -->
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input v-model="form.email" class="input" :class="{ 'is-danger' : form.errors.has('email') }">
+              <input
+                class="input"
+                name="email"
+                type="email"
+                v-model="form.email"
+                :class="{ 'is-danger' : form.errors.has('email') }"
+              >
               <span class="icon is-small is-left">
-                <i class="mdi mdi-email" />
+                <i class="mdi mdi-mail-ru" />
               </span>
             </div>
             <p v-if="form.errors.has('email')" class="help is-danger">
@@ -18,7 +29,13 @@
           <!-- pass -->
           <div class="field">
             <div class="control has-icons-left has-icons-right">
-              <input v-model="form.password" class="input" :class="{ 'is-danger' : form.errors.has('password') }">
+              <input
+                class="input"
+                name="password"
+                type="password"
+                v-model="form.password"
+                :class="{ 'is-danger' : form.errors.has('password') }"
+              >
               <span class="icon is-small is-left">
                 <i class="mdi mdi-fingerprint" />
               </span>
@@ -34,7 +51,7 @@
         <section class="level padding">
           <div class="level-left">
             <label class="checkbox">
-              <input v-model="form.remember" type="checkbox">
+              <input v-model="remember" type="checkbox">
               Remember me
             </label>
           </div>
@@ -72,7 +89,12 @@ export default {
     async login () {
       await this.form.post('/api/login')
         .then(response => {
-          console.log(response)
+          this.$store.dispatch('auth/saveToken', {
+            user: response.data.data,
+            token: response.data.meta.token,
+            remember: this.remember
+          })
+          this.$router.push({ name: 'home' })
         })
         .catch(e => {
           this.message.type = 'is-danger'

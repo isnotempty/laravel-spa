@@ -13,6 +13,7 @@
   border-radius: $border-radius;
   color: $font-color;
   transition: $transition;
+  font-size: $font-size;
 }
 
 .select select:hover,
@@ -39,4 +40,5 @@
 .is-active.input {
   border-color: $border-color-dark;
   box-shadow: none;
+  transition: $transition;
 }

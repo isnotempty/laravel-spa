@@ -3,6 +3,7 @@
     <header :class="{ 'padding' : padding }">
       <section v-if="title">
         <h1 class="title">
+          <i v-if="icon" :class="icon" />
           {{ title }}
         </h1>
         <h2 class="subtitle">
@@ -34,7 +35,8 @@ export default {
     title: String,
     subtitle: String,
     padding: Boolean,
-    message: Object
+    message: Object,
+    icon: String
   }
 }
 </script>
