@@ -9,7 +9,9 @@
           <li class="navbar-item">
             <a href="#" @click.prevent="logout">
               Logout
-              <i class="mdi mdi-arrow-right" />
+              <span class="icon">
+                <i class="mdi mdi-arrow-right" />
+              </span>
             </a>
           </li>
         </ul>

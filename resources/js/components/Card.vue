@@ -1,19 +1,17 @@
 <template>
   <section class="card">
     <header :class="{ 'padding' : padding }">
-      <section v-if="title">
-        <h1 class="title">
+        <h1 v-if="title" class="title">
           <i v-if="icon" :class="icon" />
           {{ title }}
         </h1>
-        <h2 class="subtitle">
+        <h2 v-if="title && subtitle" class="subtitle">
           {{ subtitle }}
         </h2>
-      </section>
       <slot name="header" />
-      <article v-if="message.message" class="message margin-top" :class="message.type">
+      <article v-if="errors.has('error')" class="message margin-top is-danger">
         <div class="message-body">
-          {{ message.message }}
+          {{ errors.get('error') }}
         </div>
       </article>
     </header>
@@ -35,7 +33,7 @@ export default {
     title: String,
     subtitle: String,
     padding: Boolean,
-    message: Object,
+    errors: Object,
     icon: String
   }
 }

@@ -2,7 +2,14 @@
   <div class="main-layout">
     <div class="container">
       <navbar />
-      <child />
+      <div class="columns">
+        <div class="column is-one-fifth">
+          Sidebar
+        </div>
+        <div class="column">
+          <child />
+        </div>
+      </div>
     </div>
   </div>
 </template>

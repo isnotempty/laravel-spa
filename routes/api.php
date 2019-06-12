@@ -7,7 +7,7 @@ Route::group(['middleware' => 'guest:api', 'namespace' => 'Api'], function () {
 Route::group(['middleware' => 'auth:api', 'namespace' => 'Api'], function () {
     Route::get('/user', function () {
         return request()->user();
-    });
+    })->name('api.user');
 
     Route::post('logout', 'Auth\LoginController@logout')->name('api.logout');
 });

@@ -2,7 +2,7 @@
   <section>
     <card
       title="Login"
-      :message="message"
+      :errors="form.errors"
       icon="mdi mdi-fingerprint"
       padding
     >
@@ -78,28 +78,20 @@ export default {
       email: '',
       password: ''
     }),
-    remember: true,
-    message: {
-      message: null,
-      type: 'is-success'
-    }
+    remember: true
   }),
 
   methods: {
     async login () {
-      await this.form.post('/api/login')
-        .then(response => {
-          this.$store.dispatch('auth/saveToken', {
-            user: response.data.data,
-            token: response.data.meta.token,
-            remember: this.remember
-          })
-          this.$router.push({ name: 'home' })
-        })
-        .catch(e => {
-          this.message.type = 'is-danger'
-          this.message.message = this.form.errors.get('error')
-        })
+      const { data } = await this.form.post('/api/login')
+
+
+      // this.$store.dispatch('auth/saveToken', {
+      //   user: response.data.data,
+      //   token: response.data.meta.token,
+      //   remember: this.remember
+      // })
+      // this.$router.push({ name: 'home' })
     }
   }
 }
